@@ -20,7 +20,7 @@ function PLUGIN:EnvKeys(ctx)
     --[[
     return {
         {
-            key = "<TOOL>_HOME",
+            key = "screenshotbot_HOME",
             value = mainPath,
         },
         {

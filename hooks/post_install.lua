@@ -30,7 +30,7 @@ function PLUGIN:PostInstall(ctx)
     -- You might just need to move files around:
     --[[
     os.execute("mkdir -p " .. path .. "/bin")
-    os.execute("mv " .. path .. "/<TOOL>-*/bin/* " .. path .. "/bin/")
+    os.execute("mv " .. path .. "/screenshotbot-*/bin/* " .. path .. "/bin/")
     os.execute("chmod +x " .. path .. "/bin/*")
     --]]
 
@@ -48,10 +48,10 @@ function PLUGIN:PostInstall(ctx)
     -- If the archive already has the correct structure (bin/ directory),
     -- you might not need to do anything:
     --[[
-    -- Archive already contains bin/<TOOL>, just verify it works
-    local testResult = os.execute(path .. "/bin/<TOOL> --version > /dev/null 2>&1")
+    -- Archive already contains bin/screenshotbot, just verify it works
+    local testResult = os.execute(path .. "/bin/screenshotbot --version > /dev/null 2>&1")
     if testResult ~= 0 then
-        error("<TOOL> installation appears to be broken")
+        error("screenshotbot installation appears to be broken")
     end
     --]]
 
