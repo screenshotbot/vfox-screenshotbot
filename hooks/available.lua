@@ -6,14 +6,8 @@ function PLUGIN:Available(ctx)
     local http = require("http")
     local json = require("json")
 
-    -- Example 1: GitHub Tags API (most common)
-    -- Replace screenshotbot/screenshotbot-oss with your tool's repository
-    local repo_url = "https://api.github.com/repos/screenshotbot/screenshotbot-oss/tags"
+    local repo_url = "https://screenshotbot.io/screenshotbot-cli-versions"
 
-    -- Example 2: GitHub Releases API (for tools that use GitHub releases)
-    -- local repo_url = "https://api.github.com/repos/screenshotbot/screenshotbot-oss/releases"
-
-    -- mise automatically handles GitHub authentication - no manual token setup needed
     local resp, err = http.get({
         url = repo_url,
     })
@@ -21,29 +15,18 @@ function PLUGIN:Available(ctx)
     if err ~= nil then
         error("Failed to fetch versions: " .. err)
     end
+
     if resp.status_code ~= 200 then
         error("GitHub API returned status " .. resp.status_code .. ": " .. resp.body)
     end
 
-    local tags = json.decode(resp.body)
+    local versions = json.decode(resp.body)
     local result = {}
 
     -- Process tags/releases
-    for _, tag_info in ipairs(tags) do
-        local version = tag_info.name
-
-        -- Clean up version string (remove 'v' prefix if present)
-        -- version = version:gsub("^v", "")
-
-        -- For releases API, you might want:
-        -- local version = tag_info.tag_name:gsub("^v", "")
-        -- local is_prerelease = tag_info.prerelease or false
-        -- local note = is_prerelease and "pre-release" or nil
-
+    for _, version in ipairs(versions) do
         table.insert(result, {
             version = version,
-            note = nil, -- Optional: "latest", "lts", "pre-release", etc.
-            -- addition = {} -- Optional: additional tools/components
         })
     end
 
