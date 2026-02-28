@@ -13,10 +13,10 @@ PLUGIN = { -- luacheck: ignore
     description = "A mise tool plugin for screenshotbot",
 
     -- Required: Plugin author/maintainer
-    author = "<GITHUB_USER>",
+    author = "screenshotbot",
 
     -- Optional: Repository URL for plugin updates
-    updateUrl = "https://github.com/<GITHUB_USER>/mise-screenshotbot",
+    updateUrl = "https://github.com/screenshotbot/mise-screenshotbot",
 
     -- Optional: Minimum mise runtime version required
     minRuntimeVersion = "0.2.0",
