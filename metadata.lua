@@ -16,7 +16,7 @@ PLUGIN = { -- luacheck: ignore
     author = "screenshotbot",
 
     -- Optional: Repository URL for plugin updates
-    updateUrl = "https://github.com/screenshotbot/mise-screenshotbot",
+    updateUrl = "https://github.com/screenshotbot/vfox-screenshotbot",
 
     -- Optional: Minimum mise runtime version required
     minRuntimeVersion = "0.2.0",
